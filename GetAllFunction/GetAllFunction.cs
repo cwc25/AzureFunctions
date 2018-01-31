@@ -22,7 +22,7 @@ namespace Functions.GetAllFunction
             
             var driverData = DriverDataCollection.GetCollection().Find(new BsonDocument()).ToList();
             // Fetching the name from the path parameter in the request URL test
-            return req.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(driverData));
+            return req.CreateResponse(HttpStatusCode.OK, "2");
         }
     }
 }
