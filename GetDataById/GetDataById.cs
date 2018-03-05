@@ -18,7 +18,7 @@ namespace Functions.GetDataById
             var data = DriverDataCollection.GetCollection().Find(query).ToList();
 
             // Fetching the name from the path parameter in the request URL test
-            return req.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(data));
+            return req.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(JsonConvert.SerializeObject(data)));
         }
     }
 }
