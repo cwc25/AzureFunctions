@@ -5,6 +5,11 @@
   "tracing": {
     "consoleLevel": "info",
     "fileLoggingMode": "debugOnly"
+  },
+  "serviceBus": {
+    "maxConcurrentCalls": 1,
+    "prefetchCount": 100,
+    "autoRenewTimeout": "00:05:00"
   }
   /*
     "aggregator": { test

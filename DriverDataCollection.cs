@@ -16,10 +16,10 @@ namespace Functions
 {
     public static class DriverDataCollection
     {
-        public static IMongoCollection<DriverData> GetCollection()
+        public static IMongoCollection<dynamic> GetCollection(string collectionName)
         {
             var host = System.Environment.GetEnvironmentVariable("MongoHost");
-            var collectionName = System.Environment.GetEnvironmentVariable("MongoCollectionName");
+            var collection = System.Environment.GetEnvironmentVariable(collectionName);
             var userName = System.Environment.GetEnvironmentVariable("MongoUserName");
             var password = System.Environment.GetEnvironmentVariable("MongoPwd");
             var dbName = System.Environment.GetEnvironmentVariable("MongoDBName");
@@ -38,7 +38,7 @@ namespace Functions
             MongoClient client = new MongoClient(settings);
             var database = client.GetDatabase(dbName);
 
-            return database.GetCollection<DriverData>(collectionName);
+            return database.GetCollection<dynamic>(collection);
         }
     }
 }
