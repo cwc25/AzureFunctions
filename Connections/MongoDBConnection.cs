@@ -14,9 +14,9 @@ using Newtonsoft.Json;
 
 namespace Functions
 {
-    public static class DriverDataCollection
+    public static class MongoDBConnection
     {
-        public static IMongoCollection<dynamic> GetCollection(string collectionName)
+        public static IMongoCollection<T> GetCollection<T>(string collectionName)
         {
             var host = System.Environment.GetEnvironmentVariable("MongoHost");
             var collection = System.Environment.GetEnvironmentVariable(collectionName);
@@ -38,7 +38,7 @@ namespace Functions
             MongoClient client = new MongoClient(settings);
             var database = client.GetDatabase(dbName);
 
-            return database.GetCollection<dynamic>(collection);
+            return database.GetCollection<T>(collection);
         }
     }
 }

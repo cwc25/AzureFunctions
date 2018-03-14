@@ -18,7 +18,7 @@ namespace Functions.Circle
             //add content into MongoDB
             dynamic data = await req.Content.ReadAsStringAsync();
             var circleData = JsonConvert.DeserializeObject<CircleData>(data as string);
-            DriverDataCollection.GetCollection("CircleCollectionName").InsertOne(circleData);
+            MongoDBConnection.GetCollection<CircleData>("CircleCollectionName").InsertOne(circleData);
 
             return req.CreateResponse(HttpStatusCode.OK, "Inserted");
         }

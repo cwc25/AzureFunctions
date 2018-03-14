@@ -21,7 +21,7 @@ namespace Functions.GetAllFunction
         public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "getall")]HttpRequestMessage req, TraceWriter log)
         {
             
-            var driverData = DriverDataCollection.GetCollection("DriverCollectionName").Find(new BsonDocument()).ToList();
+            var driverData = MongoDBConnection.GetCollection<dynamic>("DriverCollectionName").Find(new BsonDocument()).ToList();
             // Fetching the name from the path parameter in the request URL test
             return req.CreateResponse(HttpStatusCode.OK, driverData, JsonMediaTypeFormatter.DefaultMediaType);
         }

@@ -13,5 +13,6 @@ namespace Functions.Model
         public DateTime CreatedTime { get; set; }
         public string Model { get; set; }
         public string Priority { get; set; }
+        public Object Id { get; set; }
     }
 }
